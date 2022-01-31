@@ -1,4 +1,5 @@
-const fs = require('fs');
+// const fs = require('fs');
+// const noteData = require('../../../db/db.json')
 
 let noteTitle;
 let noteText;
@@ -32,7 +33,9 @@ const getNotes = () =>
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
+      //DO WE NEED TO IMPORT THE FILE DB.JSON HERE?
     },
+    //body: JSON.stringify(noteData)
   });
 
 const saveNote = (note) =>
@@ -183,3 +186,4 @@ if (window.location.pathname === '/notes') {
 }
 
 getAndRenderNotes();
+//module.exports = getAndRenderNotes
