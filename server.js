@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const util = require('util');
 const uniqid = require('uniqid');
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 const noteData = require('./db/db.json')
 // const { allowedNodeEnvironmentFlags } = require('process');
 
@@ -24,9 +24,11 @@ app.get('/notes', (req, res) =>
 app.get('/api/notes', (req, res) => {
     //res.readFile(path.join(__dirname, 'db/db.json'))
     //res.json(noteData);
-    console.log(noteData);
+    //console.log(noteData);
     res.json(noteData);
 });
+
+
 
 app.post('/api/notes', (req, res) => {
     console.log('in the post route');
@@ -46,6 +48,12 @@ app.post('/api/notes', (req, res) => {
     // };
 // })
 })
+
+// app.delete('api/notes/:id, (req, res) => {
+//     const id = req.params.id;
+//     fs.readAn
+//     console.log(id)
+// });
 
 // const readFromFile = util.promisify(fs.readFile);
 
