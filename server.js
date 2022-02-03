@@ -32,10 +32,6 @@ app.get('/api/notes', (req, res) => {
 
 app.post('/api/notes', (req, res) => {
     console.log('in the post route');
-    // fs.readFile('./db/db.json', 'utf-8', (err, data) =>{
-    //     if (err) {
-    //         console.error(err);
-    //     } else {
             console.log('in the else of ReadandAppend');
             var newNote = req.body;
             console.log('this is before the id', newNote);
@@ -45,26 +41,13 @@ app.post('/api/notes', (req, res) => {
             fs.writeFile('./db/db.json', JSON.stringify(noteData, null, 4) , (err) => {
             err ? console.log(err) : res.send(newNote)
         })
-    // };
-// })
-})
+});
 
-// app.delete('api/notes/:id, (req, res) => {
-//     const id = req.params.id;
-//     fs.readAn
-//     console.log(id)
-// });
-
-// const readFromFile = util.promisify(fs.readFile);
-
-// const writeToFile = (destination, content) => {};
-
-// const readAndAppend = (content, file) => {
-    
-// };
-
-// readFromFile();
-// writeToFile();
+app.delete('api/notes/:id', (req, res) => {
+    const id = req.params.id;
+    res.unlink(id, './db/db.json')
+    res.readFile(id, './db/db.json')
+});
 
 
 app.get('*', (req, res) =>
